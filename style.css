@@ -17,13 +17,14 @@
 body {
     font-family: 'DM Sans', sans-serif;
     color: var(--deep-black);
-    background-color: var(--soft-white);
+    /* background-color: var(--soft-white); */
+    background-color: #fcfafa;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel Decorative', serif;
     font-weight: 600;
     line-height: 1.2;
 }
@@ -293,6 +294,8 @@ section {
 }
 
 /* Services */
+/* Services (existing styles, unchanged) */
+/* Services (existing styles, unchanged) */
 .services {
     background: var(--light-gray);
     position: relative;
@@ -331,31 +334,66 @@ section {
     padding: 2.5rem 2rem;
     position: relative;
     z-index: 1;
-    transform-style: preserve-3d;
-    transform: translateZ(0);
 }
 
 .service-card:hover {
-    transform: translateY(-15px) translateZ(20px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* Pseudo-element for the blush-pink background fill */
 .service-card::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 0;
-    background: var(--blush-pink);
+    /* --- MODIFICATION HERE: Using rgba for transparency --- */
+    background: rgba(250, 218, 221, 0.7); /* blush-pink with 70% opacity */
     z-index: -1;
     transition: var(--transition);
+    border-radius: 15px;
 }
 
 .service-card:hover::before {
     height: 100%;
+    top: 0;
 }
 
+/* New pseudo-element for the shining border trail */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 17px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 20%,
+        /* --- MODIFICATION HERE: Using rgba for rose-gold transparency --- */
+        rgba(212, 175, 55, 0.8) 50%, /* rose-gold with 80% opacity */
+        transparent 80%,
+        transparent 100%
+    );
+    background-size: 300% 300%;
+    animation: none;
+    transition: opacity 0.4s ease-out, background-position 0.0s linear 0.4s;
+}
+
+.service-card:hover::after {
+    opacity: 1;
+    animation: shineBorder 2.5s linear infinite;
+    transition: opacity 0.4s ease-out;
+}
+
+/* Inner content styles (unchanged, ensuring deep-black for contrast) */
 .service-icon {
     font-size: 3.5rem;
     color: var(--rose-gold);
@@ -364,18 +402,19 @@ section {
 }
 
 .service-card:hover .service-icon {
-    color: var(--soft-white);
-    transform: scale(1.1) rotate(10deg);
+    color: var(--deep-black);
+    transform: scale(1.05) rotate(5deg);
 }
 
 .service-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     transition: var(--transition);
+    color: var(--deep-black);
 }
 
 .service-card:hover h3 {
-    color: var(--soft-white);
+    color: var(--deep-black);
 }
 
 .service-card p {
@@ -384,7 +423,17 @@ section {
 }
 
 .service-card:hover p {
-    color: var(--soft-white);
+    color: var(--deep-black);
+}
+
+/* Keyframes (unchanged) */
+@keyframes shineBorder {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 /* About */
