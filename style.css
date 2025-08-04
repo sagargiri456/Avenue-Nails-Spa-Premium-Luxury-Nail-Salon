@@ -315,13 +315,11 @@ section {
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
 }
 
 .service-card {
@@ -1009,4 +1007,90 @@ footer::before {
     .contact-form {
         padding: 2rem;
     }
+}
+/* service detail pages */
+.service-details-page {
+    padding-top: 8rem;
+}
+
+.service-header-hero {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.service-header-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.service-header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--soft-white);
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.service-header-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.service-header-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.service-description {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--soft-white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.service-description h2 {
+    font-size: 2.5rem;
+    color: var(--rose-gold);
+    margin-bottom: 1rem;
+}
+
+.service-description h3 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.service-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.service-description li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-description li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--rose-gold);
+    font-weight: bold;
 }
