@@ -547,7 +547,7 @@ section {
     gap: 1.5rem;
 }
 
-.gallery-item {
+/* .gallery-item {
     border-radius: 12px;
     overflow: hidden;
     height: 300px;
@@ -556,7 +556,7 @@ section {
     transition: var(--transition);
     transform-style: preserve-3d;
     perspective: 1000px;
-}
+} */
 
 .gallery-item:hover {
     transform: scale(1.03) translateZ(20px);
@@ -1116,3 +1116,40 @@ footer::before {
     color: var(--rose-gold);
     font-weight: bold;
 } */
+.carousel-container {
+    position: relative; /* Needed for absolute positioning of buttons */
+    /* width: 600px;  */
+    /* height: 400px; */
+    overflow: hidden; /* Hide the images that are outside the container */
+    margin: 0 auto; /* Center the carousel */
+  }
+  
+  .carousel-images {
+    display: flex; /* Arrange images in a row */
+    transition: transform 0.5s ease-in-out; /* Add a smooth transition for sliding */
+  }
+  
+  .carousel-images img {
+    width: 700rem; /* Make each image fill the carousel container */
+    height: 30rem;
+    flex-shrink: 0; /* Prevent images from shrinking */
+  }
+  
+  .prev-button, .next-button {
+    position: absolute; /* Position buttons on top of the images */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .prev-button {
+    left: 10px;
+  }
+  
+  .next-button {
+    right: 10px;
+  }

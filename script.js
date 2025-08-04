@@ -109,3 +109,77 @@ document.addEventListener('mousemove', (e) => {
     const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
     hero.style.transform = `translate3d(${xAxis}px, ${yAxis}px, 0)`;
 });
+
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+    const carouselImages = document.querySelector('.carousel-images');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    const dots = document.querySelectorAll('.dot');
+    const totalImages = dots.length;
+    let currentIndex = 0;
+    let autoScrollInterval; // Variable to hold the interval ID
+    
+    // Function to update the carousel display (same as before)
+    function updateCarousel() {
+      const offset = -currentIndex * 100;
+      carouselImages.style.transform = `translateX(${offset}%)`;
+    
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentIndex].classList.add('active');
+    }
+    
+    // Function to advance to the next slide
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      updateCarousel();
+    }
+    
+    // Function to start the auto-scrolling
+    function startAutoScroll() {
+      // Set an interval to call nextSlide() every 3000ms (3 seconds)
+      autoScrollInterval = setInterval(nextSlide, 3000);
+    }
+    
+    // Function to stop the auto-scrolling
+    function stopAutoScroll() {
+      // Clear the interval to stop the automatic rotation
+      clearInterval(autoScrollInterval);
+    }
+    
+    // Event listeners for the "Next" and "Previous" buttons
+    // We will also stop the auto-scroll when a user manually interacts with the carousel
+    nextButton.addEventListener('click', () => {
+      stopAutoScroll();
+      nextSlide();
+      startAutoScroll(); // Restart the auto-scroll after a manual click
+    });
+    
+    prevButton.addEventListener('click', () => {
+      stopAutoScroll();
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      updateCarousel();
+      startAutoScroll(); // Restart the auto-scroll after a manual click
+    });
+    
+    // Event listeners for the dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoScroll();
+        currentIndex = index;
+        updateCarousel();
+        startAutoScroll(); // Restart the auto-scroll after a manual click
+      });
+    });
+    
+    // Optional: Pause auto-scroll on hover
+    // This is a good user experience feature to allow users to read content
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', stopAutoScroll);
+    carouselContainer.addEventListener('mouseleave', startAutoScroll);
+    
+    // Initialize the carousel on page load and start the auto-scroll
+    updateCarousel();
+    startAutoScroll();
+})
