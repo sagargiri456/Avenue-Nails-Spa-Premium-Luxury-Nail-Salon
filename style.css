@@ -323,6 +323,26 @@ section {
     position: relative;
     z-index: 1;
 }
+.price-tag {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--rose-gold); /* Using your existing brand color */
+}
+
+/* Updated styling for list items to better align content */
+.price-list-section ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 1rem;
+    color: #555;
+}
+
+.price-list-section ul li:last-child {
+    border-bottom: none;
+}
 
 .service-card {
     background: var(--soft-white);
