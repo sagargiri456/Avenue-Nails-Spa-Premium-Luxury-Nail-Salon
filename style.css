@@ -1094,3 +1094,33 @@ footer::before {
     color: var(--rose-gold);
     font-weight: bold;
 }
+/* Centering the last row on larger screens */
+@media (min-width: 992px) {
+    .services-grid {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+.service-card {
+    background-color: var(--soft-white);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: var(--deep-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 1200px; /* Optional: Sets a max-width for the grid on large screens */
+    margin: 0 auto;
+}
