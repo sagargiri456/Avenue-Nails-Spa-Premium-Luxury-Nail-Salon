@@ -1109,10 +1109,10 @@ footer::before {
     margin-bottom: 0.5rem;
 }
 
-.service-description li::before {
+/* .service-description li::before {
     content: '✓';
     position: absolute;
     left: 0;
     color: var(--rose-gold);
     font-weight: bold;
-}
+} */
