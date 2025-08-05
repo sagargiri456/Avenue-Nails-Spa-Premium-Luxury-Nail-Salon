@@ -1127,12 +1127,17 @@ footer::before {
   .carousel-images {
     display: flex; /* Arrange images in a row */
     transition: transform 0.5s ease-in-out; /* Add a smooth transition for sliding */
+    width: 70rem; /* Make each image fill the carousel container */
+    height: 30rem;
   }
   
   .carousel-images img {
-    width: 700rem; /* Make each image fill the carousel container */
-    height: 30rem;
+    width: 100%; /* Make each image fill the carousel container */
+    height: 100%;
     flex-shrink: 0; /* Prevent images from shrinking */
+    border-radius: 15px;
+    /* overflow: hidden; */
+    /* padding: 5rem; */
   }
   
   .prev-button, .next-button {
