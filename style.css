@@ -1144,6 +1144,29 @@
     line-height: 1;
   }
   
+  .prev-button,
+  .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: #333;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  .prev-button:hover,
+  .next-button:hover {
+    background-color: #f0c987;
+    color: white;
+  }
+  
   .prev-button {
     left: 10px;
   }
