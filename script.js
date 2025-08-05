@@ -105,8 +105,24 @@ window.addEventListener('scroll', () => {
 // Mouse move parallax effect
 document.addEventListener('mousemove', (e) => {
     const hero = document.querySelector('.hero');
-    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+    if (!hero) return; // Exit if hero element is not found
+
+    // Get the bounding rectangle of the hero section
+    const rect = hero.getBoundingClientRect();
+
+    // Calculate the center of the hero section relative to the viewport
+    const heroCenterX = rect.left + rect.width / 2;
+    const heroCenterY = rect.top + rect.height / 2;
+
+    // Calculate the mouse position relative to the center of the hero section
+    const mouseXRelativeToHero = e.clientX - heroCenterX;
+    const mouseYRelativeToHero = e.clientY - heroCenterY;
+
+    // Apply the parallax effect based on the mouse position relative to the hero
+    // Adjust the divisor (e.g., 25) to control the intensity of the parallax
+    const xAxis = mouseXRelativeToHero / 25;
+    const yAxis = mouseYRelativeToHero / 25;
+
     hero.style.transform = `translate3d(${xAxis}px, ${yAxis}px, 0)`;
 });
 
