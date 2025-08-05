@@ -14,12 +14,13 @@
     box-sizing: border-box;
   }
   
-  body {
+  html,body {
     font-family: 'DM Sans', sans-serif;
     color: var(--deep-black);
     background-color: #fcfafa;
     overflow-x: hidden;
     line-height: 1.6;
+    
   }
   
   h1, h2, h3, h4, h5 {
@@ -123,6 +124,7 @@
   /* Hero Section - 3D Parallax Background */
   .hero {
     height: 100vh;
+    /* width: 100vb; */
     display: flex;
     align-items: center;
     justify-content: center;
