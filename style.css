@@ -504,6 +504,7 @@
   .gallery {
     background: var(--champagne);
     position: relative;
+    padding: 0%;
   }
   
   .gallery::before {
@@ -518,60 +519,9 @@
     z-index: 0;
   }
   
-  .gallery-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
+
   
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .gallery-item {
-    border-radius: 12px;
-    overflow: hidden;
-    height: 300px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-  
-  .gallery-item:hover {
-    transform: scale(1.03) translateZ(20px);
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-  }
-  
-  .gallery-item:hover img {
-    transform: scale(1.1);
-  }
-  
-  .gallery-item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-    opacity: 0;
-    transition: var(--transition);
-  }
-  
-  .gallery-item:hover::after {
-    opacity: 1;
-  }
+
   
   /* Contact */
   .contact-container {
@@ -1008,18 +958,7 @@
   }
   
   /* Carousel Styles (Updated for responsiveness) */
-/* Core Carousel Styles */
-.carousel-container {
-    /* No fixed height here! The JavaScript will set this dynamically. */
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: height 0.5s ease-in-out; /* Smooth height transition */
-  }
+
   
   /* Flexbox is used to align images side-by-side */
   .carousel-images {
@@ -1065,20 +1004,11 @@
   }
   
  /* Carousel Container */
-.carousel-container {
-    /* This container will have a consistent height and width */
-    max-width: 900px;
-    width: 90%;
-    height: 500px; /* Set a fixed height for a consistent look */
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
+
   
   /* Image Wrapper */
   .carousel-images {
+    /* width: 100vw; */
     display: flex;
     height: 100%; /* Match the height of the container */
     transition: transform 0.5s ease-in-out;
@@ -1096,7 +1026,7 @@
     justify-content: center; /* Center the image horizontally */
     align-items: center; /* Center the image vertically */
     background-color: #222222;
-    border-radius:15px ;
+    /* border-radius:15px ; */
   }
   
   /* Image Styling */
@@ -1182,10 +1112,7 @@
   
   /* Responsive Media Queries */
   @media (max-width: 768px) {
-    .carousel-container {
-      width: 95%;
-      height: 400px; /* Adjust height for tablets */
-    }
+
   
     .prev-button, .next-button {
       font-size: 1rem;
@@ -1194,12 +1121,7 @@
   }
   
   @media (max-width: 576px) {
-    .carousel-container {
-      width: 100%;
-      height: 300px; /* Further adjust height for mobile devices */
-      border-radius: 0;
-      box-shadow: none;
-    }
+
     
     .prev-button, .next-button {
       font-size: 0.8rem;
@@ -1270,9 +1192,7 @@
       transform: none;
     }
   
-    .carousel-container {
-      width: 95%;
-    }
+
   
     .hero h1 {
       font-size: 3.5rem;
@@ -1371,11 +1291,7 @@
     .service-header-content h1{
       font-size: 2.2rem;
     }
-    .carousel-container {
-      width: 100%;
-      border-radius: 0;
-      box-shadow: none;
-    }
+
     
     .prev-button,
     .next-button {
@@ -1388,3 +1304,91 @@
       height: 10px;
     }
   }
+
+
+.carousel-container {
+
+  width: 100vw; 
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: height 0.5s ease-in-out; 
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* Image Styling */
+.carousel-images img {
+  width: 100%;
+  height: auto; /* Let the browser determine the height based on the image's aspect ratio */
+  object-fit: contain; /* Ensures the image is fully visible, scaled to fit */
+  flex-shrink: 0;
+  display: block; /* Removes any default spacing below the image */
+  border-radius: 15px;
+}
+
+/* Navigation Buttons */
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* New, fixed-height carousel styling */
+.carousel-container {
+  width: 100vw; /* This is the key for full horizontal view */
+  height: 500px;
+  margin: 0; /* Remove auto margin to prevent horizontal centering */
+  position: relative;
+  overflow: hidden;
+  border-radius: 0; /* Removing border-radius for a clean full-width look */
+  box-shadow: none; /* Removing shadow for a cleaner full-width look */
+}
+
+/* Individual Slides */
+.carousel-slide {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222222;
+  margin: 0 auto;
+  padding: 0%;
+  border-radius: 15px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 100vw;
+    height: 400px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-container {
+    width: 100vw;
+    height: 300px;
+    margin: 0;
+  }
+}
