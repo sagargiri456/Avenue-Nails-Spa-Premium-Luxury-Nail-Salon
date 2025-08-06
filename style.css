@@ -950,9 +950,9 @@
   }
   
   /* service detail pages */
-  .service-details-page {
+  /* .service-details-page {
     padding-top: 8rem;
-  }
+  } */
   
   .service-header-hero {
     height: 70vh;
@@ -962,7 +962,7 @@
     position: relative;
     overflow: hidden;
     background-size: cover;
-    background-position: center;
+    background-position: top;
   }
   
   .service-header-hero::before {
